@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/js/axios.min.js"></script>
+        <script src="/js/vue.js"></script>
+        <script src="/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="/css/materialize.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>ChineseTester</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="row" style="margin-bottom:1rem">
+                <!-- Word Qn. -->
+                <div class="col s10 offset-s1 m4 offset-m4">
+                    <div class="z-depth-4 card-panel teal wordBox">
+                        <div class="card-content center-block valign-wrapper">
+                            <h3 class="center-align white-text">{{ word }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Possible Answers -->
+                <div v-for="answer in answers">
+                    <div class="col s12 m3 offset-m2">
+
+                        <div v-if="answer === correct">
+                            <div id="correct" class="z-depth-1-half card-panel red answerBox hoverable" onclick="correctAnswer()">
+                                <div class="card-title center-block valign-wrapper">
+                                    <h4 class="center-align white-text">{{ answer }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="z-depth-1-half card-panel red answerBox hoverable">
+                                <div class="card-title center-block valign-wrapper">
+                                    <h4 class="center-align white-text">{{ answer }}</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:60vh;">
+                <div class="input-field col s6 m4 offset-m2">
+                    <input value="泄漏, 海域, 海峡, 猛烈, 储油舱, 弥漫, 蔚蓝, 漂浮, 褐色, 船艇, 协同, 截止, 抵达, 戒备, 滨海, 防范, 质量, 吁请, 截至, 逐渐, 葬礼, 瀑布, 枯竭, 震惊, 预测, 唤醒, 号召, 哀悼, 震耳欲聋, 悬崖, 迷蒙, 世外桃源, 平衡, 奄奄一息, 教授, 抑制" id="clwords" type="text" class="validate">
+                    <label>Chinese Words, comma separated</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input value="Spill, Sea territory, Channel strait, Fierce；Violent, Oil tank, Spread all over; Fill the air; Diffuse in the air, Azure blue; Sky blue, To float; To drift, Brown, Boat, Cooperate, To stop；To close, To arrive； To reach, Take precaution, Coastal；Coast, Precaution, Quality, Appeal, Up to；By, Gradually, Funeral, Waterfall, Dried Up, Shock, Forecast；Predict, Rouse, Call; Appeal, Greive over death; Condolences, Deafening noise/sound, Cliff, Hazy, A fictitious land of peace, Balance; Equilibrium, On the verge of death, Professor; To teach, Stop; Control; Inhibit" id="meanings" type="text" class="validate">
+                    <label>Meanings, comma separated</label>
+                </div>
+                <div class="input-field col m2"></div>
+                <button class="btn waves-effect waves-light s2 offset-s5" type="submit" name="action" onclick="updateInfo()">Save</button>
+            </div>
+            <h1 class="center">Other configurations</h1>
+            <div class="row">
+                <div class="input-field col s6 m4 offset-m2">
+                    <input value="泄漏, 海域, 海峡, 猛烈, 储油舱, 弥漫, 蔚蓝, 漂浮, 褐色, 船艇, 协同, 截止, 抵达, 戒备, 滨海, 防范, 质量, 吁请, 截至, 逐渐, 附近, 污染, 撞击, 观察, 扩散, 所幸, 联手, 透露, 措施, 避开, 惊慌, 异味, 起伏, 呼吁, 赞叹, 聚集, 关注, 广泛, 意识, 邀请, 毫不犹豫, 暖慢, 导致, 闻名远近, 壮观, 即将, 叹息, 葬礼, 瀑布, 枯竭, 震惊, 预测, 唤醒, 号召, 哀悼, 震耳欲聋, 悬崖, 迷蒙, 世外桃源, 平衡, 奄奄一息, 教授, 抑制"type="text" class="validate">
+                    <label>Chinese Words, comma separated</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input value="Spill, Sea territory, Channel strait, Fierce；Violent, Oil tank, Spread all over; Fill the air; Diffuse in the air, Azure blue; Sky blue, To float; To drift, Brown, Boat, Cooperate, To close; To end, To arrive； To reach, Take precaution, Coastal；Coast, Precaution, Quality, Ask (higher ups), Up to；By, Gradually, Nearby, Pollution；Contamination, Strike; Hit, To observe, To spread the word, Fortunately, Work together, Divulge, Measure, Avoid； Evade, To panic, Rare delicacy；Peculiar smell, Up and down (physically), Call；Appeal (Same level), Praise；Admire, Gather (Mainly People), Attention, Widely; Widespread, Awareness；Consciousness, Invite, No hesitation, Slowly, Resulting in, Well know, Suprising; Magnificent;, Coming soon; Soon, Sigh, Funeral, Waterfall, Dried Up, Shock, Forecast；Predict, Rouse, Appeal (to same level), Greive over death; Condolences, Deafening noise/sound, Cliff, Hazy, A fictitious land of peace, Balance; Equilibrium, On the verge of death, Professor; To teach, Stop; Control; Inhibit" type="text" class="validate">
+                    <label>Meanings, comma separated</label>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/js/script.js"></script>
+</html>
